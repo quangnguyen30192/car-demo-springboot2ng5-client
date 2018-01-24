@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CarService} from "../car.service";
-import {GiphyService} from "../giphy.service";
+import {CarService} from "../services/car.service";
+import {GiphyService} from "../services/giphy.service";
 
 @Component({
   selector: 'app-car-list',
@@ -22,5 +22,4 @@ export class CarListComponent implements OnInit {
       }
     );
   }
-
 }
