@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {CARS_API, COOL_CARS_API} from "../global";
@@ -16,7 +16,7 @@ export class CarService {
   }
 
   saveOrUpdate(car: any): Observable<any> {
-    if(car['href']) {
+    if (car['href']) {
       return this.http.put(car.href, car);
     }
 
@@ -28,6 +28,6 @@ export class CarService {
   }
 
   get(id: string) {
-    return this.http.get(`${CARS_API}/${id}`)
+    return this.http.get(`${CARS_API}/${id}`);
   }
 }
