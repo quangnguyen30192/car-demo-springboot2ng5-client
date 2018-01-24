@@ -11,23 +11,19 @@ export class CarService {
   }
 
   getCoolCars(): Observable<any> {
-
     return this.http.get(COOL_CARS_API);
   }
 
   saveOrUpdate(car: any): Observable<any> {
-    if (car['href']) {
-      return this.http.put(car.href, car);
+    if (car._links) {
+      console.log(`update ${car.name}`);
+      return this.http.put(car._links.self.href, car);
     }
-
+    console.log(`save ${car.name}`);
     return this.http.post(CARS_API, car);
   }
 
-  remove(href: string): Observable<any> {
-    return this.http.delete(href);
-  }
-
-  get(id: string) {
+  get(id: number) {
     return this.http.get(`${CARS_API}/${id}`);
   }
 }

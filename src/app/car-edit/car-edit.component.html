@@ -1,14 +1,26 @@
 <mat-card>
+
   <mat-card-header>
-    <mat-card-title>Update {{requestedCar.name}}</mat-card-title>
+    <mat-card-title>{{!requestedCar ? 'Add new car' : 'Update ' + requestedCar.name}}</mat-card-title>
   </mat-card-header>
+
+  <div class="giphy">
+    <img mat-card-lg-image src="{{requestedCar.giphyUrl}}" *ngIf="requestedCar">
+  </div>
   <mat-card-content>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Name" [(ngModel)]="name">
+    </mat-form-field>
 
-    <img mat-card-lg-image="" src="{{requestedCar.giphyUrl}}">
+
   </mat-card-content>
-  <mat-card-actions align="start">
-    <button mat-raised-button color="primary">Update</button>
-    <button mat-raised-button color="primary">Delete</button>
 
+  <mat-card-actions align="start">
+    <button mat-raised-button color="primary" (click)="onSave()">{{requestedCar ? 'Update' : 'Save'}}</button>
+    <button mat-raised-button color="primary" [routerLink]="['/car-list']">Cancel</button>
   </mat-card-actions>
+
+  <mat-card-footer>
+
+  </mat-card-footer>
 </mat-card>
